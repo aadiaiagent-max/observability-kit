@@ -1,12 +1,12 @@
 # @aadiaiagent/observability-kit
 
-**Staff / platform observability primitives for Node** — structured logging, counters & histograms, and correlated traces — without OpenTelemetry baggage or vendor SDKs.
+**Observability primitives for Node** — structured logging, counters & histograms, and correlated traces — without OpenTelemetry baggage or vendor SDKs.
 
-Built as an interview-sized library: readable in one sitting, production-shaped APIs, in-memory exporters for demos and tests. No API keys. Node 20+, ESM, MIT.
+Small surface area: readable in one sitting, production-shaped APIs, in-memory exporters for demos and tests. No API keys. Node 20+, ESM, MIT.
 
 ## Why this exists
 
-Hiring managers evaluating platform / Staff SWE candidates often want to see:
+Useful observability libraries usually share these traits:
 
 - **Correlation-first design** — every log line and span share a `traceId`
 - **Clean boundaries** — `LogSink` / `SpanExporter` interfaces instead of hard-wired vendors
@@ -70,7 +70,7 @@ await root.withSpan('GET /health', async (ctx) => {
 
 | Choice | Rationale |
 |--------|-----------|
-| **No OTel dependency** | Keeps the surface interview-sized; adapter on the roadmap |
+| **No OTel dependency** | Keeps the surface small; adapter on the roadmap |
 | **Correlation first** | `traceId` / `spanId` on every log via `correlationFields()` |
 | **Pluggable sinks** | Console today, Memory for tests, HTTP/file later — no vendor lock-in |
 | **In-memory exporters** | Deterministic unit tests; demos need zero infra |
